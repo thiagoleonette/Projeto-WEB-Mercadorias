@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/LayoutPadrao">
+	  
+<head>
+	<title>Negociação de Mercadorias</title>
+</head>
+
+<body>
+
+	<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>
+						Cadastro de Mercadorias
+					</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" th:href="@{/mercadoria}">
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Listar Mercadoria</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+	
+		<form method="POST" th:object = "${mercadoria}" class="form-vertical  js-form-loading">
+		
+			<div class="form-group">
+				<label for="nome">Nome da Mercadoria</label>
+				<input id="nome" type="text" class="form-control" th:field = "*{nome}"/>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label for="tipo" class="control-label">Tipo da Mercadoria</label>
+					<select id="tipo" class="form-control" th:field = "*{tipo}">
+						<option value="">Selecione o tipo</option>
+						<option th:each = "tipo : ${tipos}" th:value = "${tipo}" th:text = "${tipo.descricao}"></option>
+					</select>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<label for="quantidade" class="control-label">Quantidade</label>
+					<input id="quantidade" type="text" class="form-control" th:field = "*{quantidade}"/>
+				</div>
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-sm-6 form-group">
+					<label for="preco" class="control-label">Preço da Mercadoria</label>
+					<input id="preco" type="text" class="form-control" th:field = "*{preco}"/>
+				</div>
+				
+				<div class="col-sm-6 form-group">
+					<label for="negocio" class="control-label">Tipo do Negocio</label>
+					<input id="negocio" type="text" class="form-control" th:field = "*{Negocio}"/>
+				</div>
+				
+			</div>
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+	
+		</form>
+	</div>
+	</section>
+</body>
+</html>
